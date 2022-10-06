@@ -1,10 +1,24 @@
 version: '3.1'
 
 services:
-  smurd:
+  smurd-bot:
+    depends_on:
+      - smurd-db
     build:
       context: .
     environment:
       - BOT_NAME=${BOT_NAME}
       - BOT_TOKEN=${BOT_TOKEN}
+      - BOT_DB_USERNAME=${BOT_DB_USERNAME}
+      - BOT_DB_PASSWORD=${BOT_DB_PASSWORD}
     restart: always
+  smurd-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${BOT_DB_USERNAME}
+      POSTGRES_PASSWORD: ${BOT_DB_PASSWORD}
+      POSTGRES_DB: 'smurd_db'
+      POSTGRES_ROOT_PASSWORD: 'root'
+    ports:
+      - '5432:5432'

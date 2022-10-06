@@ -3,6 +3,7 @@ package com.github.smurd.command;
 import com.github.smurd.bot.SmurdTelegramBot;
 import com.github.smurd.service.SendBotMessageService;
 import com.github.smurd.service.SendBotMessageServiceImpl;
+import com.github.smurd.service.TelegramUserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -17,6 +18,8 @@ abstract class AbstractCommandTest {
 
     protected SmurdTelegramBot smurdTelegramBot = Mockito.mock(SmurdTelegramBot.class);
     protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(smurdTelegramBot);
+
+    protected TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
 
     abstract String getCommandName();
 

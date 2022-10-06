@@ -2,6 +2,8 @@ package com.github.smurd.bot;
 
 import com.github.smurd.command.CommandContainer;
 import com.github.smurd.service.SendBotMessageServiceImpl;
+import com.github.smurd.service.TelegramUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -25,8 +27,10 @@ public class SmurdTelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public SmurdTelegramBot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    @Autowired
+    public SmurdTelegramBot(TelegramUserService telegramUserService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this),
+                telegramUserService);
     }
 
     @Override
