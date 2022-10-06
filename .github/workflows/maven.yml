@@ -11,25 +11,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_DB: 'dev_smurd_db'
-          POSTGRES_USER: 'dev_smurd_db_user'
-          POSTGRES_PASSWORD: 'dev_smurd_db_password'
-        ports:
-          - 6543:5432
-        # Set health checks to wait until postgres has started
-        options:
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -38,13 +20,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Setup test database
-      env:
-        DATABASE_NAME_TEST: 'dev_smurd_db'
-        DATABASE_USER: 'dev_smurd_db_user'
-        DATABASE_PASSWORD: 'dev_smurd_db_password'
-        DATABASE_HOST: 'localhost'
-        DATABASE_PORT: '6543'
-        POSTGRES_DB: 'dev_smurd_db'
+    - name: Set up PostgreSQL
+      uses: harmon758/postgresql-action@v1
+      with:
+        postgresql db: 'dev_smurd_db'
+        postgresql user: 'dev_smurd_db_user'
+        postgresql password: 'dev_smurd_db_password'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
