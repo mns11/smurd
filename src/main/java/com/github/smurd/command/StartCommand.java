@@ -5,6 +5,8 @@ import com.github.smurd.service.SendBotMessageService;
 import com.github.smurd.service.TelegramUserService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import static com.github.smurd.command.CommandUtils.getChatId;
+
 /**
  * Start {@link Command}.
  */
@@ -13,8 +15,8 @@ public class StartCommand implements Command{
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
-    public static final String START_MESSAGE = "Привет! Я SMURD Telegram Bot. Я помогу Вам быть в курсе последних " +
-            "событий. Я еще маленький и только учусь.";
+    public static final String START_MESSAGE = "Hello! I am SMURD Telegram Bot. I will help you keep up to date with " +
+            "drummers. I'm still small and just learning.";
 
     public StartCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -23,7 +25,7 @@ public class StartCommand implements Command{
 
     @Override
     public void execute(Update update) {
-        String chatId = update.getMessage().getChatId().toString();
+        Long chatId = getChatId(update);
 
         telegramUserService.findByChatId(chatId).ifPresentOrElse(
                 user -> {

@@ -3,10 +3,8 @@ package com.github.smurd.repository.entity;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -22,10 +20,13 @@ public class TelegramUser {
 
     @Id
     @Column(name = "chat_id")
-    private String chatId;
+    private Long chatId;
 
     @Column(name = "active")
     private boolean active;
+
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+    private List<DrummerSub> drummerSubs;
 
     @Override
     public boolean equals(Object o) {
