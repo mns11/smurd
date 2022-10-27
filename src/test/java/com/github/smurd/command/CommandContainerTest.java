@@ -1,5 +1,7 @@
 package com.github.smurd.command;
 
+import com.github.smurd.repository.DrummerRepository;
+import com.github.smurd.service.DrummerSubService;
 import com.github.smurd.service.SendBotMessageService;
 import com.github.smurd.service.TelegramUserService;
 import org.junit.jupiter.api.Assertions;
@@ -19,7 +21,10 @@ public class CommandContainerTest {
     public void init() {
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
-        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
+        DrummerSubService drummerSubService = Mockito.mock(DrummerSubService.class);
+        DrummerRepository drummerRepository = Mockito.mock(DrummerRepository.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService, drummerSubService,
+                drummerRepository);
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.github.smurd.repository;
 
+import com.github.smurd.repository.entity.DrummerSub;
 import com.github.smurd.repository.entity.TelegramUser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -40,7 +41,7 @@ public class TelegramUserRepositoryIT {
     public void shouldProperlySaveTelegramUser() {
         //given
         TelegramUser telegramUser = new TelegramUser();
-        telegramUser.setChatId("1234567890");
+        telegramUser.setChatId(1234567890L);
         telegramUser.setActive(false);
         telegramUserRepository.save(telegramUser);
 
@@ -50,5 +51,21 @@ public class TelegramUserRepositoryIT {
         //then
         Assertions.assertTrue(saved.isPresent());
         Assertions.assertEquals(telegramUser, saved.get());
+    }
+
+    @Sql(scripts = {"/sql/clearDbs.sql", "/sql/fiveDrummerSubsForUser.sql"})
+    @Test
+    public void shouldProperlyGetAllDrummerSubsForUser() {
+        //when
+        Optional<TelegramUser> userFromDB = telegramUserRepository.findById(1L);
+
+        //then
+        Assertions.assertTrue(userFromDB.isPresent());
+        List<DrummerSub> drummerSubs = userFromDB.get().getDrummerSubs();
+        for (int i = 0; i < drummerSubs.size(); i++) {
+            Assertions.assertEquals(String.format("drummer%s", (i + 1)), drummerSubs.get(i).getName());
+            Assertions.assertEquals(i + 1, drummerSubs.get(i).getId());
+            Assertions.assertEquals(i + 1, drummerSubs.get(i).getLastReleaseId());
+        }
     }
 }
