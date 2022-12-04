@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.5.0-SNAPSHOT
+
+* SMURD-5: added ability to subscribe on drummer
+* SMURD-7: added ability to get a list of subscriptions
+
 ## 0.4.0-SNAPSHOT
 
 * SMURD-4: added repository layer

@@ -17,14 +17,16 @@ public class DrummerSubServiceImpl implements DrummerSubService{
     private final TelegramUserService telegramUserService;
 
     @Autowired
-    public DrummerSubServiceImpl(DrummerSubRepository drummerSubRepository, TelegramUserService telegramUserService) {
+    public DrummerSubServiceImpl(DrummerSubRepository drummerSubRepository,
+            TelegramUserService telegramUserService) {
         this.drummerSubRepository = drummerSubRepository;
         this.telegramUserService = telegramUserService;
     }
 
     @Override
     public DrummerSub save(Long chatId, Drummer drummer) {
-        TelegramUser telegramUser = telegramUserService.findByChatId(chatId).orElseThrow(NotFoundException::new);
+        TelegramUser telegramUser = telegramUserService.findByChatId(chatId)
+                .orElseThrow(NotFoundException::new);
         //TODO add exception handling
         DrummerSub drummerSub;
         Optional<DrummerSub> drummerSubFromDB = drummerSubRepository.findById(drummer.getId());

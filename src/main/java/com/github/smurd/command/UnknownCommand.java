@@ -12,8 +12,8 @@ public class UnknownCommand implements Command{
 
     private final SendBotMessageService sendBotMessageService;
 
-    public static final String UNKNOWN_MESSAGE = "I don't understand you \uD83D\uDE1F. Type /help to see " +
-            "what I understand.";
+    public static final String UNKNOWN_MESSAGE =
+            "I don't understand you \uD83D\uDE1F. Type /help to see what I understand.";
 
     public UnknownCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;

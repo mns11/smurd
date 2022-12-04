@@ -27,8 +27,8 @@ public class AddDrummerSubCommand implements Command {
     private final DrummerSubService drummerSubService;
     private final DrummerRepository drummerRepository;
 
-    public AddDrummerSubCommand(SendBotMessageService sendBotMessageService, DrummerSubService drummerSubService,
-                                DrummerRepository drummerRepository) {
+    public AddDrummerSubCommand(SendBotMessageService sendBotMessageService,
+            DrummerSubService drummerSubService, DrummerRepository drummerRepository) {
         this.sendBotMessageService = sendBotMessageService;
         this.drummerSubService = drummerSubService;
         this.drummerRepository = drummerRepository;
@@ -41,7 +41,8 @@ public class AddDrummerSubCommand implements Command {
             return;
         }
         Long chatId = getChatId(update);
-        if (getMessage(update).equalsIgnoreCase(ADD_DRUMMER_SUB.getCommandName() + SPACE + "all")) {
+        if (getMessage(update).equalsIgnoreCase(ADD_DRUMMER_SUB.getCommandName() +
+                SPACE + "all")) {
             //saveAllDrummerSub(chatId); //TODO refactoring saveAllDrummerSub
             return;
         }
@@ -62,7 +63,7 @@ public class AddDrummerSubCommand implements Command {
 
     private void sendDrummerIdList(Long chatId, List<Drummer> drummers) {
         String drummerIds = drummers.stream()
-                .map(drummer -> String.format("%s - %s \n", drummer.getName(), drummer.getId()))
+                .map(drummer -> String.format("%s - %s %n", drummer.getName(), drummer.getId()))
                 .collect(Collectors.joining());
 
         String message = """
@@ -81,7 +82,8 @@ public class AddDrummerSubCommand implements Command {
     private void sendDrummerNotFound(Long chatId, String drummerParam, boolean withId) {
         String drummerNotFoundMessage = "No drummer with %s = \"%s\"";
         String param = withId ? "ID" : "name";
-        sendBotMessageService.sendMessage(chatId, String.format(drummerNotFoundMessage, param, drummerParam));
+        sendBotMessageService.sendMessage(chatId, String.format(drummerNotFoundMessage, param,
+                drummerParam));
     }
 
     private void sendDrummerWithNoName(Long chatId) {
@@ -111,7 +113,8 @@ public class AddDrummerSubCommand implements Command {
             for (Drummer drummer : drummers) {
                 drummerSubService.save(chatId, drummer);
             }
-            sendBotMessageService.sendMessage(chatId, "You signed up to all available drummers");
+            sendBotMessageService.sendMessage(chatId,
+                    "You signed up to all available drummers");
         } else {
             sendBotMessageService.sendMessage(chatId, "No subscriptions available");
         }

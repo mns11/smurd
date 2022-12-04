@@ -21,14 +21,14 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @ActiveProfiles("test")
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class TelegramUserRepositoryIT {
+class TelegramUserRepositoryTest {
 
     @Autowired
     private TelegramUserRepository telegramUserRepository;
 
     @Sql(scripts = {"/sql/clearDbs.sql", "/sql/telegram_users.sql"})
     @Test
-    public void shouldProperlyFindAllActiveUsers() {
+    void shouldProperlyFindAllActiveUsers() {
         //when
         List<TelegramUser> users = telegramUserRepository.findAllByActiveTrue();
 
@@ -38,7 +38,7 @@ public class TelegramUserRepositoryIT {
 
     @Sql(scripts = {"/sql/clearDbs.sql"})
     @Test
-    public void shouldProperlySaveTelegramUser() {
+    void shouldProperlySaveTelegramUser() {
         //given
         TelegramUser telegramUser = new TelegramUser();
         telegramUser.setChatId(1234567890L);
@@ -55,7 +55,7 @@ public class TelegramUserRepositoryIT {
 
     @Sql(scripts = {"/sql/clearDbs.sql", "/sql/fiveDrummerSubsForUser.sql"})
     @Test
-    public void shouldProperlyGetAllDrummerSubsForUser() {
+    void shouldProperlyGetAllDrummerSubsForUser() {
         //when
         Optional<TelegramUser> userFromDB = telegramUserRepository.findById(1L);
 
@@ -63,7 +63,8 @@ public class TelegramUserRepositoryIT {
         Assertions.assertTrue(userFromDB.isPresent());
         List<DrummerSub> drummerSubs = userFromDB.get().getDrummerSubs();
         for (int i = 0; i < drummerSubs.size(); i++) {
-            Assertions.assertEquals(String.format("drummer%s", (i + 1)), drummerSubs.get(i).getName());
+            Assertions.assertEquals(String.format("drummer%s", (i + 1)),
+                    drummerSubs.get(i).getName());
             Assertions.assertEquals(i + 1, drummerSubs.get(i).getId());
             Assertions.assertEquals(i + 1, drummerSubs.get(i).getLastReleaseId());
         }

@@ -30,10 +30,10 @@ public class SmurdTelegramBot extends TelegramLongPollingBot {
     private final CommandContainer commandContainer;
 
     @Autowired
-    public SmurdTelegramBot(TelegramUserService telegramUserService, DrummerSubService drummerSubService,
-                            DrummerRepository drummerRepository) {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this),
-                telegramUserService, drummerSubService, drummerRepository);
+    public SmurdTelegramBot(TelegramUserService telegramUserService,
+            DrummerSubService drummerSubService, DrummerRepository drummerRepository) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(
+                this), telegramUserService, drummerSubService, drummerRepository);
     }
 
     @Override

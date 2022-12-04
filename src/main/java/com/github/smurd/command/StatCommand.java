@@ -18,7 +18,8 @@ public class StatCommand implements Command {
     public final static String STAT_MESSAGE = "SMURD Telegram Bot is used by %s people.";
 
     @Autowired
-    public StatCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
+    public StatCommand(SendBotMessageService sendBotMessageService,
+            TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
         this.telegramUserService = telegramUserService;
     }

@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @DisplayName("Unit-level testing for DrummerSubService")
 @Slf4j
-public class DrummerSubServiceTest {
+class DrummerSubServiceTest {
 
     private DrummerSubService drummerSubService;
     private DrummerSubRepository drummerSubRepository;
@@ -45,7 +45,7 @@ public class DrummerSubServiceTest {
     }
 
     @Test
-    public void shouldProperlySaveDrummer() {
+    void shouldProperlySaveDrummer() {
         //given
         Optional<Drummer> drummerFromDB = drummerRepository.findById(1);
         if (drummerFromDB.isPresent()) {
@@ -65,7 +65,7 @@ public class DrummerSubServiceTest {
     }
 
     @Test
-    public void shouldProperlyAddUserToExistingDrummer() {
+    void shouldProperlyAddUserToExistingDrummer() {
         //given
         TelegramUser oldTelegramUser = new TelegramUser();
         oldTelegramUser.setChatId(2L);
@@ -78,8 +78,8 @@ public class DrummerSubServiceTest {
             drummerSubFromDB.setName(drummerFromDB.get().getName());
             drummerSubFromDB.addUser(oldTelegramUser);
 
-            Mockito.when(drummerSubRepository.findById(drummerFromDB.get().getId())).thenReturn(Optional.of(
-                    drummerSubFromDB));
+            Mockito.when(drummerSubRepository.findById(drummerFromDB.get().getId())).thenReturn(
+                    Optional.of(drummerSubFromDB));
 
             DrummerSub expectedDrummerSub = new DrummerSub();
             expectedDrummerSub.setId(drummerFromDB.get().getId());

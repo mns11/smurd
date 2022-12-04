@@ -8,10 +8,11 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Integration-level testing for DiscogsClientImpl")
 class DiscogsClientTest {
 
-    private final DiscogsClient discogsClient = new DiscogsClientImpl("https://api.discogs.com");
+    private final DiscogsClient discogsClient =
+            new DiscogsClientImpl("https://api.discogs.com");
 
     @Test
-    public void shouldProperlyGetWithId() {
+    void shouldProperlyGetWithId() {
         //given
         String id = "1";
 

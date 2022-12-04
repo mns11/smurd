@@ -9,7 +9,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @DisplayName("Unit-level testing for SendBotMessageService")
-public class SendBotMessageServiceTest {
+class SendBotMessageServiceTest {
 
     private SendBotMessageService sendBotMessageService;
     private SmurdTelegramBot smurdTelegramBot;
@@ -21,7 +21,7 @@ public class SendBotMessageServiceTest {
     }
 
     @Test
-    public void shouldProperlySendMessage() throws TelegramApiException {
+    void shouldProperlySendMessage() throws TelegramApiException {
         //given
         Long chatId = 123L;
         String message = "test_message";

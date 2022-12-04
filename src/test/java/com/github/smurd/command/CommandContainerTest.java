@@ -13,7 +13,7 @@ import org.mockito.Mockito;
 import java.util.Arrays;
 
 @DisplayName("Unit-level testing for CommandContainer")
-public class CommandContainerTest {
+class CommandContainerTest {
 
     private CommandContainer commandContainer;
 
@@ -23,12 +23,12 @@ public class CommandContainerTest {
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
         DrummerSubService drummerSubService = Mockito.mock(DrummerSubService.class);
         DrummerRepository drummerRepository = Mockito.mock(DrummerRepository.class);
-        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService, drummerSubService,
-                drummerRepository);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService,
+                drummerSubService, drummerRepository);
     }
 
     @Test
-    public void shouldGetAllTheExistingCommands() {
+    void shouldGetAllTheExistingCommands() {
         //when-then
         Arrays.stream(CommandName.values())
                 .forEach(commandName -> {
@@ -38,7 +38,7 @@ public class CommandContainerTest {
     }
 
     @Test
-    public void shouldReturnUnknownCommand() {
+    void shouldReturnUnknownCommand() {
         //given
         String unknownCommand = "/test";
 

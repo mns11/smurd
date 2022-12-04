@@ -8,9 +8,10 @@ public enum CommandName {
     START("/start"),
     STOP("/stop"),
     HELP("/help"),
-    NO("nocommand"),
+    NO("noCommand"),
     STAT("/stat"),
-    ADD_DRUMMER_SUB("/adddrummersub");
+    ADD_DRUMMER_SUB("/adddrummersub"),
+    LIST_DRUMMER_SUB("/listdrummersub");
 
     private final String commandName;
     CommandName(String commandName) {

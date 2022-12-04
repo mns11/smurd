@@ -16,14 +16,19 @@ public class HelpCommand implements Command {
     public static final String HELP_MESSAGE = String.format("""
                     ✨<b>Available commands</b>✨
 
-                    <b>Start / end work with the bot</b>
+                    <b>Start / end work with the bot:</b>
                     %s - get started
                     %s - stop working
+                    
+                    <b>Work with subscriptions to drummers:</b>
+                    %s - subscribe to drummer
+                    %s - get list of drummers subscribed to
 
                     %s - get help
                     %s - get statistics
                     """,
-            START.getCommandName(), STOP.getCommandName(), HELP.getCommandName(), STAT.getCommandName());
+            START.getCommandName(), STOP.getCommandName(), ADD_DRUMMER_SUB.getCommandName(),
+            LIST_DRUMMER_SUB.getCommandName(), HELP.getCommandName(), STAT.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;

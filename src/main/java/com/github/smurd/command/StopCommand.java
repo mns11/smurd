@@ -16,7 +16,8 @@ public class StopCommand implements Command{
 
     public static final String STOP_MESSAGE = "Deactivated all your subscriptions \uD83D\uDE1F.";
 
-    public StopCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
+    public StopCommand(SendBotMessageService sendBotMessageService,
+            TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
         this.telegramUserService = telegramUserService;
     }

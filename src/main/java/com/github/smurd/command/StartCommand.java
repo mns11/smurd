@@ -15,10 +15,12 @@ public class StartCommand implements Command{
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
-    public static final String START_MESSAGE = "Hello! I am SMURD Telegram Bot. I will help you keep up to date with " +
+    public static final String START_MESSAGE =
+            "Hello! I am SMURD Telegram Bot. I will help you keep up to date with " +
             "drummers. I'm still small and just learning.";
 
-    public StartCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
+    public StartCommand(SendBotMessageService sendBotMessageService,
+            TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
         this.telegramUserService = telegramUserService;
     }

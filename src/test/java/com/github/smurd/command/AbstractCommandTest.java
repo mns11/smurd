@@ -17,7 +17,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 abstract class AbstractCommandTest {
 
     protected SmurdTelegramBot smurdTelegramBot = Mockito.mock(SmurdTelegramBot.class);
-    protected SendBotMessageService sendBotMessageService = new SendBotMessageServiceImpl(smurdTelegramBot);
+    protected SendBotMessageService sendBotMessageService =
+            new SendBotMessageServiceImpl(smurdTelegramBot);
 
     protected TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
 

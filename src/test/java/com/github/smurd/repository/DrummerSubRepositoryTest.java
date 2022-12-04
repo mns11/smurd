@@ -21,14 +21,14 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @ActiveProfiles("test")
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class DrummerSubRepositoryIT {
+class DrummerSubRepositoryTest {
 
     @Autowired
     private DrummerSubRepository drummerSubRepository;
 
     @Sql(scripts = {"/sql/clearDbs.sql", "/sql/fiveUsersForDrummerSub.sql"})
     @Test
-    public void shouldProperlyGetAllUsersForDrummerSub() {
+    void shouldProperlyGetAllUsersForDrummerSub() {
         //when
         Optional<DrummerSub> drummerSubFromDB = drummerSubRepository.findById(1);
 

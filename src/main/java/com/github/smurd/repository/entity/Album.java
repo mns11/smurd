@@ -16,7 +16,7 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-@Table(name = "album")
+@Table(name = "albums")
 public class Album {
 
     @Id
