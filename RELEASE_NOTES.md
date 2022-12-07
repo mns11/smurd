@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.6.0-SNAPSHOT
+
+* SMURD-8: added the ability to delete drummer subscription
+
 ## 0.5.0-SNAPSHOT
 
 * SMURD-5: added ability to subscribe on drummer

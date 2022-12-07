@@ -11,7 +11,8 @@ public enum CommandName {
     NO("noCommand"),
     STAT("/stat"),
     ADD_DRUMMER_SUB("/adddrummersub"),
-    LIST_DRUMMER_SUB("/listdrummersub");
+    LIST_DRUMMER_SUB("/listdrummersub"),
+    DELETE_DRUMMER_SUB("/deletedrummersub");
 
     private final String commandName;
     CommandName(String commandName) {

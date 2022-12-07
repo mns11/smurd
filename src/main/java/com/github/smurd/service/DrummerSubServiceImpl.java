@@ -47,4 +47,14 @@ public class DrummerSubServiceImpl implements DrummerSubService{
 
         return drummerSubRepository.save(drummerSub);
     }
+
+    @Override
+    public DrummerSub save(DrummerSub drummerSub) {
+        return drummerSubRepository.save(drummerSub);
+    }
+
+    @Override
+    public Optional<DrummerSub> findById(Integer id) {
+        return drummerSubRepository.findById(id);
+    }
 }

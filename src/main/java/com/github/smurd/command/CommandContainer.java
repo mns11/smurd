@@ -33,6 +33,8 @@ public class CommandContainer {
                         sendBotMessageService, drummerSubService, drummerRepository))
                 .put(LIST_DRUMMER_SUB.getCommandName(), new ListDrummerSubCommand(
                         sendBotMessageService, telegramUserService))
+                .put(DELETE_DRUMMER_SUB.getCommandName(), new DeleteDrummerSubCommand(
+                        sendBotMessageService, drummerSubService, telegramUserService))
                 .build();
 
         unknownCommand = new UnknownCommand(sendBotMessageService);
