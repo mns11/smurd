@@ -23,7 +23,7 @@ jobs:
     - name: Set up PostgreSQL
       uses: harmon758/postgresql-action@v1
       with:
-        postgresql version: '11'
+        postgresql version: '11.15'
         postgresql db: 'dev_smurd_db'
         postgresql user: 'dev_smurd_db_user'
         postgresql password: 'dev_smurd_db_password'
