@@ -21,7 +21,7 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @ActiveProfiles("test")
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-class DrummerSubRepositoryTest {
+class DrummerSubRepositoryIntegrationTest {
 
     @Autowired
     private DrummerSubRepository drummerSubRepository;
