@@ -21,9 +21,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Set up PostgreSQL
-      uses: harmon758/postgresql-action@v1
+      uses: harmon758/postgresql-action@v1.0.0
       with:
-        postgresql version: '15.1'
         postgresql db: 'dev_smurd_db'
         postgresql user: 'dev_smurd_db_user'
         postgresql password: 'dev_smurd_db_password'
