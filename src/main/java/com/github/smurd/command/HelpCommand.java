@@ -22,13 +22,15 @@ public class HelpCommand implements Command {
                     
                     <b>Work with subscriptions to drummers:</b>
                     %s - subscribe to drummer
+                    %s - unsubscribe from the drummer
                     %s - get list of drummers subscribed to
 
                     %s - get help
                     %s - get statistics
                     """,
             START.getCommandName(), STOP.getCommandName(), ADD_DRUMMER_SUB.getCommandName(),
-            LIST_DRUMMER_SUB.getCommandName(), HELP.getCommandName(), STAT.getCommandName());
+            DELETE_DRUMMER_SUB.getCommandName(), LIST_DRUMMER_SUB.getCommandName(),
+            HELP.getCommandName(), STAT.getCommandName());
 
     public HelpCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
